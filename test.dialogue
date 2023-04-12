@@ -1,0 +1,19 @@
+~ talktothisbutton
+
+Button: [[yo|hi|hey]], [[wazzup|how are you|hows it going]].
+Button: Whatcha wanna talk abt.
+- What is this
+	Skye: What is this???
+	Button: This is a test game made by dizcordmodbad
+	Skye: .[wait=0.1].[wait=0.1].[wait=0.1] what
+	Skye: who tf is dizcordmodbad
+- Why can you talk
+	Skye: Why can you talk
+	Button: I dunno
+- Scream for me please
+	Skye: Yo could you scream for me please
+	Button: ok
+	Button: [shake rate=30 level=15W]AAAAAAAAAAAAAAAAAAAAAAA[/shake]
+- Start again => talktothisbutton
+set Movementstuff.moveison = true
+=> END

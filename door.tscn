@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvne5fw133ni4"]
+
+[ext_resource type="PackedScene" uid="uid://c8s5tk2jnne52" path="res://Door.glb" id="1_gygpb"]
+[ext_resource type="Script" path="res://Door.gd" id="2_jq5ws"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68bgk"]
+size = Vector3(0.344058, 2.95249, 4.80601)
+
+[node name="Door" instance=ExtResource("1_gygpb")]
+script = ExtResource("2_jq5ws")
+
+[node name="Armature001" parent="." index="0"]
+transform = Transform3D(0.884265, 0, -0.466984, 0, 1, 0, 0.466984, 0, 0.884265, 0, 1.93669, 0.737785)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature001/Skeleton3D" index="1"]
+transform = Transform3D(1, -9.40751e-17, 0, 0, 0, 1, -9.40751e-17, -1, 0, 0, 0, 0)
+bone_name = "Bone"
+bone_idx = 0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Armature001/Skeleton3D/BoneAttachment3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature001/Skeleton3D/BoneAttachment3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00221872, 1.23461, 0.389721)
+shape = SubResource("BoxShape3D_68bgk")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Close"

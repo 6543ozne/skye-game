@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://c0wm7nl43rk1s"]
+
+[ext_resource type="PackedScene" uid="uid://cm0r0j6gmovs3" path="res://Skye.tscn" id="1_lg72p"]
+[ext_resource type="PackedScene" uid="uid://df4wj4e5tp14k" path="res://Interaction.tscn" id="3_xwxnu"]
+[ext_resource type="Texture2D" uid="uid://bglmutvfax2rv" path="res://Prototype_blue_persian_32x32px.png" id="4_v17xr"]
+[ext_resource type="PackedScene" uid="uid://cvne5fw133ni4" path="res://door.tscn" id="5_8llas"]
+[ext_resource type="Material" uid="uid://capvrfm5wyngj" path="res://prototype.tres" id="6_jjdan"]
+[ext_resource type="Script" path="res://Dialog.gd" id="6_rxetc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1hpv"]
+albedo_texture = ExtResource("4_v17xr")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="PrismMesh" id="PrismMesh_sjoyb"]
+left_to_right = 2.0
+size = Vector3(8, 8, 8)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n602b"]
+data = PackedVector3Array(12, 4, 4, 4, -4, 4, -4, -4, 4, 12, 4, -4, -4, -4, -4, 4, -4, -4, 12, 4, 4, 12, 4, -4, 4, -4, 4, 12, 4, -4, 4, -4, -4, 4, -4, 4, 12, 4, -4, 12, 4, 4, -4, -4, -4, 12, 4, 4, -4, -4, 4, -4, -4, -4, -4, -4, 4, 4, -4, 4, -4, -4, -4, 4, -4, 4, 4, -4, -4, -4, -4, -4)
+
+[sub_resource type="Environment" id="Environment_168r8"]
+background_mode = 1
+background_color = Color(0.737255, 0.737255, 0.737255, 1)
+
+[node name="Node" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Skye1MESHIDK" parent="." instance=ExtResource("1_lg72p")]
+
+[node name="Button3" parent="." instance=ExtResource("3_xwxnu")]
+transform = Transform3D(0.364893, 0, 0, 0, 0.364893, 0, 0, 0, 0.364893, -8.96181, 0.347706, -8.55763)
+prompt_message = "Open da noor"
+
+[node name="Button4" parent="." instance=ExtResource("3_xwxnu")]
+transform = Transform3D(0.364893, 0, 0, 0, 0.364893, 0, 0, 0, 0.364893, -14.1961, 0.347706, -8.55763)
+prompt_message = "Talk to this guy"
+
+[node name="Node3D" type="Node3D" parent="Button4"]
+script = ExtResource("6_rxetc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.89957, 7.90264, 3.73923, 0)
+material_override = SubResource("StandardMaterial3D_f1hpv")
+mesh = SubResource("PrismMesh_sjoyb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_n602b")
+
+[node name="Door" parent="." instance=ExtResource("5_8llas")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.07738, 8.4094e-07, -11.0599)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_168r8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+use_collision = true
+size = Vector3(98, 2, 76)
+material = ExtResource("6_jjdan")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, -53.5216)
+use_collision = true
+size = Vector3(18.0002, 2, 25.0428)
+material = ExtResource("6_jjdan")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.2, -53.5216)
+use_collision = true
+size = Vector3(3.17707, 2, 25.0428)
+material = ExtResource("6_jjdan")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5264, -0.8, -53.5216)
+use_collision = true
+size = Vector3(18.0002, 2, 25.0428)
+material = ExtResource("6_jjdan")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4902, 1.65483, 0)
+use_collision = true
+size = Vector3(9.20481, 1, 5.15379)
+material = ExtResource("6_jjdan")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.7621, 3.24618, 0)
+use_collision = true
+size = Vector3(10.7167, 1, 5.15379)
+material = ExtResource("6_jjdan")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(0.978433, 0, -0.206563, 0, 1, 0, 0.206563, 0, 0.978433, -80.6096, 4.41057, -3.36143)
+use_collision = true
+size = Vector3(28.6992, 1, 5.15379)
+material = ExtResource("6_jjdan")
+
+[connection signal="interacted" from="Button3" to="Door" method="toggle_door"]
+[connection signal="interacted" from="Button4" to="Button4/Node3D" method="dialog_test"]
