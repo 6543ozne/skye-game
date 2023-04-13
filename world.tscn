@@ -97,7 +97,7 @@ size = Vector3(10.7167, 1, 5.15379)
 material = ExtResource("6_jjdan")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
-transform = Transform3D(0.978433, 0, -0.206563, 0, 1, 0, 0.206563, 0, 0.978433, -80.6096, 4.41057, -3.36143)
+transform = Transform3D(0.978433, 0, -0.206563, 0, 1, 0, 0.206563, 0, 0.978433, -76.7219, 4.41057, -3.36143)
 use_collision = true
 size = Vector3(28.6992, 1, 5.15379)
 material = ExtResource("6_jjdan")
