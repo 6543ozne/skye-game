@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-
+@onready var z_key = $ZKeyDark
 @onready var balloon: ColorRect = $Balloon
 @onready var margin: MarginContainer = $Balloon/Margin
 @onready var character_label: RichTextLabel = $Balloon/Margin/VBox/CharacterLabel
@@ -97,6 +97,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 ## Start some dialogue
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+	z_key.set("visible", false)
 	Movementstuff.moveison = false
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false

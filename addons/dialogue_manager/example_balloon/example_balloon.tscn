@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=7 format=3 uid="uid://73jm5qjy52vq"]
 
 [ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_4u26j"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Texture2D" uid="uid://dxfguwrli0wf" path="res://icon.svg" id="3_lqwe0"]
+[ext_resource type="Texture2D" uid="uid://yxgs5gtlnpg8" path="res://Z_Key_Dark.png" id="3_pbpbt"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/ZKeyDark.gd" id="4_0pkmf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5d24i"]
 content_margin_left = 40.0
@@ -70,9 +71,13 @@ shortcut_keys_enabled = false
 meta_underlined = false
 hint_underlined = false
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(100, 275)
-texture = ExtResource("3_lqwe0")
+[node name="ZKeyDark" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(327, 245)
+scale = Vector2(0.320001, 0.320001)
+texture = ExtResource("3_pbpbt")
+script = ExtResource("4_0pkmf")
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="resized" from="Balloon/Margin" to="." method="_on_margin_resized"]
+[connection signal="finished_typing" from="Balloon/Margin/VBox/DialogueLabel" to="ZKeyDark" method="_on_dialogue_label_finished_typing"]

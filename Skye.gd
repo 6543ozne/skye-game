@@ -49,17 +49,14 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	movement = Movementstuff.moveison
+		
 	if movement == true:
 		SPEED=int(Default_speed)
 		anim_tree.set("parameters/TimeScale/scale", def_anim)
-		# Add the gravity.
+
+			# Add the gravity.
 		if not is_on_floor():
 			velocity.y -= gravity * delta
-		
-		# Handle Jump.
-		
-
-
 	#ANIMATIONS AND COOL stuff LIKE THAT
 		
 		anim_tree.set("parameters/Blend2/blend_amount", JUMP_LERP)
